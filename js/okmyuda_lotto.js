@@ -63,5 +63,7 @@ function makeRandTable(limitNum, paddingNum) {
         }
     }
 
-    return randTable.sort((a, b) => {return a < b ? -1 : a > b ? 1 : 0;});
+    return randTable.sort(function(a, b) {
+        return a < b ? -1 : a > b ? 1 : 0;
+    });
 }

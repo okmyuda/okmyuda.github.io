@@ -12,6 +12,13 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
 
+        <script>
+            $(document).ready(function() {
+                $.getScript("js/okmyuda_lotto.js", function() {
+                });
+            });
+        </script>
+
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({
@@ -23,28 +30,28 @@
     <body>
         <div class="ui container" style="padding-top:10px;">
             <div class="ui menu"style="height:55px;background-color:#fdfdfd;">
-                <div class="header item" style="color:#ffffff;background-color:#607d8b;">Okmyuda</div>
+                <a class="header item" href="index.html" style="color:#ffffff;background-color:#607d8b;">Okmyuda</a>
                 <a class="item" href="lotto.html">Lotto</a>
-                <a class="item" href="fibonacci.html">Fibonacci</a>
+                <div class="item" href="fibonacci.html" style="background-color:#eeeeee;">Fibonacci</div>
             </div>
         </div>
-        
         <div class="ui stackable four column centered grid" style="margin:auto;">
-            <div class="column centered row">
-                <div class="column">
-                    <div class="ui segment center aligned">
-                        <img src="/img/index_thumb_lotto.jpg"><br /><br />
-                        <button class="ui blue button" style="width:100%;" onclick="location.href='lotto.html'">로또 번호 생성기</button>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="ui segment center aligned">
-                        <img src="/img/index_thumb_fibonacci.jpg"><br /><br />
-                        <button class="ui blue button" style="width:100%;" onclick="location.href='fibonacci.html'">피보나치 가격 계산</button>
-                    </div>
-                </div>
-            </div>
             <div class="two column centered row">
+                <div class="column">
+                    <div class="ui top attached header blue segment">
+                        <p class="ui small header">피보나치 계산기</p>
+                    </div>
+    
+                    <div class="ui bottom attached stacked segment center aligned">
+
+                        TBD
+
+                    </div>
+                </div>
+                <div class="column" style="padding-top:25px;">
+                    <button class="positive ui button" style="width:100%;">Calculate</button>
+                </div>
+
                 <div class="ui divider"></div>
                 <div class="right aligned column">
                         <a href="https://github.com/okmyuda" target="_blank"><img src="img/GitHub-Mark-64px.png" style="width:25px;"></a>
