@@ -3,20 +3,36 @@
  * 
  * okmyuda@gmail.com
  * 
- * ver.190209
+ * ver.190404
  */
 
-$(document).ready(function() {
-    setTable(makeRandTable(23, 1), 3); // 1 ~ 23
-    setTable(makeRandTable(23, 23), 4); // 23 ~ 45
-    setTable(makeRandTable(45, 1), 5); // 1 ~ 45
+ // ~852
+ var mostTable = [1, 13, 27, 33, 34, 43];
+ var lessTable = [9, 22, 23, 29, 32, 41];
+ var frontTable = makeRandTable(23, 1); // 1 ~ 23
+ var backTable = makeRandTable(23, 23); // 23 ~ 45
+ var otherTable = [2, 3, 4, 5, 6, 7, 8, 10,
+                   11, 12, 14, 15, 16, 17, 18, 19, 20,
+                   21, 22, 24, 25, 26, 28, 30,
+                   31, 35, 36, 37, 38, 39, 40,
+                   42, 44, 45];
+
+ $(document).ready(function() {
+    setTable(mostTable, 1);
+    setTable(lessTable, 2);
+    setTable(frontTable, 3);
+    setTable(backTable, 4);
+
+    otherTableCorrection(frontTable);
+    otherTableCorrection(backTable);
+    setTable(makeOtherRandTable(), 5);
 });
 
-function setTable(randTable, lineNum) {
+function setTable(numTable, lineNum) {
     for (let i = 0; i < 6; i++) {
         let id = "#num" + lineNum + "_" + (i+1);
-        $(id).addClass(getColorByNum(randTable[i]));
-        $(id).text(randTable[i]);
+        $(id).addClass(getColorByNum(numTable[i]));
+        $(id).text(numTable[i]);
     }
 }
 
@@ -41,19 +57,19 @@ function getColorByNum(num) {
 }
 
 function makeRandTable(limitNum, paddingNum) {
-    let tmp;
+    let randNum;
     let randTable = [0, 0, 0, 0, 0, 0];
 
     while(1) {
-        tmp = Math.floor((Math.random() * limitNum) + paddingNum);
+        randNum = Math.floor((Math.random() * limitNum) + paddingNum);
         
         for (let i = 0; i < 6; i++) {
             if (randTable[i] === 0) {
-                randTable[i] = tmp;
+                randTable[i] = randNum;
                 break;
             }
 
-            if (randTable[i] === tmp) {
+            if (randTable[i] === randNum) {
                 break;
             }
         }
@@ -66,4 +82,39 @@ function makeRandTable(limitNum, paddingNum) {
     return randTable.sort(function(a, b) {
         return a < b ? -1 : a > b ? 1 : 0;
     });
+}
+
+function otherTableCorrection(removeTable) {
+    for (let i = 0; i < 6; i++) {
+        if (otherTable.indexOf(removeTable[i]) != -1) {
+            otherTable.splice(otherTable.indexOf(removeTable[i]), 1);
+        }
+    }
+}
+
+function makeOtherRandTable() {
+    let randNum;
+    let randTable = [0, 0, 0, 0, 0, 0];
+
+    while(1) {
+        randNum = Math.floor((Math.random() * otherTable.length) + 1);
+        for (let i = 0; i < 6; i++) {
+            if (randTable[i] === 0) {
+                randTable[i] = otherTable[randNum];
+                break;
+            }
+
+            if (randTable[i] === otherTable[randNum]) {
+                break;
+            }
+        }
+
+        if (randTable[5] !== 0) {
+            break;
+        }
+    }
+
+    return randTable.sort(function(a, b) {
+        return a < b ? -1 : a > b ? 1 : 0;
+    }); 
 }
