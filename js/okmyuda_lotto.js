@@ -3,7 +3,7 @@
  * 
  * okmyuda@gmail.com
  * 
- * ver.190404
+ * ver.190418
  */
 
  // ~852
@@ -13,7 +13,7 @@
  var backTable = makeRandTable(23, 23); // 23 ~ 45
  var otherTable = [2, 3, 4, 5, 6, 7, 8, 10,
                    11, 12, 14, 15, 16, 17, 18, 19, 20,
-                   21, 22, 24, 25, 26, 28, 30,
+                   21, 24, 25, 26, 28, 30,
                    31, 35, 36, 37, 38, 39, 40,
                    42, 44, 45];
 
@@ -97,7 +97,7 @@ function makeOtherRandTable() {
     let randTable = [0, 0, 0, 0, 0, 0];
 
     while(1) {
-        randNum = Math.floor((Math.random() * otherTable.length) + 1);
+        randNum = Math.floor((Math.random() * (otherTable.length - 1)) + 1);
         for (let i = 0; i < 6; i++) {
             if (randTable[i] === 0) {
                 randTable[i] = otherTable[randNum];
